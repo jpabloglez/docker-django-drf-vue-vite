@@ -2,15 +2,17 @@ version: '3'
 
 services:
   frontend:
-    user: "${UID}:${GID}"
+    # user: "${UID}:${GID}"
     build:
       context: .
-      dockerfile: dockerfiles/Dockerfile.vuejs
+      dockerfile: dockerfiles/Dockerfile.frontend
+    image: frontend
+    container_name: frontend
     # entrypoint: /entrypoint.sh
     depends_on:
       -  backend
     ports:
-      - "${FRONTEND_PORT}:8080"
+      - 127.0.0.1:${FRONTEND_PORT}:8080
     volumes:
       - ./src/frontend:/opt/frontend
     environment:
@@ -19,15 +21,19 @@ services:
       - CHOKIDAR_USEPOLLING=true
       - API_HOST=${BACKEND_RUNNING_ON}
       - API_PORT=${BACKEND_PORT}
+    command: npm run dev
+  
   backend:
-    user: "${UID}:${GID}"
+    # user: "${UID}:${GID}"
     build:
       context: .
-      dockerfile: dockerfiles/backend
+      dockerfile: dockerfiles/Dockerfile.backend
+    image: backend
+    container_name: backend
     depends_on:
       - db
     ports:
-      - "${BACKEND_PORT}:8000"
+      - 127.0.0.1:${BACKEND_PORT}:8000
     volumes:
       - ./src/backend:/opt/backend
     environment:
@@ -37,8 +43,10 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=secret
+  
   db:
     image: postgres:latest
+    container_name: db
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data/

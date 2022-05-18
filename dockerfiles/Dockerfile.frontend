@@ -1,13 +1,13 @@
 # https://nodejs.org/dist/latest-v16.x/docs/api/
 FROM node:lts 
 
-WORKDIR /var/www/html/app/frontend
+WORKDIR /opt/frontend
 
-COPY . . 
+COPY ./src/frontend . 
 
 RUN npm install
 
 # RUN chown -R $APP_USER:$APP_USER /var/www/html/app/frontend
 
-EXPOSE 8000
+EXPOSE 8080
 
