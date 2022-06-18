@@ -5,12 +5,22 @@ WORKDIR /opt/frontend
 
 COPY ./src/frontend . 
 
+RUN rm -rf /opt/frontend/node_modules
+
+RUN usermod --non-unique --uid 1000 www-data \
+  && groupmod --non-unique --gid 1000 www-data \
+  && chown -R www-data:www-data /opt/frontend
+
+
 RUN npm install
 # RUN npm install axios
 # RUN chown -R $APP_USER:$APP_USER /var/www/html/app/frontend
 # RUN npm install @bundled-es-modules/axios --save
 # RUN yarn add axios
 RUN npm install --save axios vue-axios
+
+# USER www-data # Causes npm not to work
+
 
 EXPOSE 8080
 

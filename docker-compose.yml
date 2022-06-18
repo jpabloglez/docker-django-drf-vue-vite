@@ -11,17 +11,20 @@ services:
     # entrypoint: /entrypoint.sh
     depends_on:
       -  backend
+    # ports:
+    #  - 127.0.0.1:${FRONTEND_PORT}:8080
     ports:
-      - 127.0.0.1:${FRONTEND_PORT}:8080
+      - 127.0.0.1:8080:8080
     volumes:
       - ./src/frontend:/opt/frontend
-    environment:
-      - HOST=0.0.0.0
-      - PORT=${FRONTEND_PORT}
-      - CHOKIDAR_USEPOLLING=true
-      - API_HOST=${BACKEND_RUNNING_ON}
-      - API_PORT=${BACKEND_PORT}
+    # environment:
+    #   - HOST=0.0.0.0
+    #   - PORT=${FRONTEND_PORT}
+    #   - CHOKIDAR_USEPOLLING=true
+    #   - API_HOST=${BACKEND_RUNNING_ON}
+    #   - API_PORT=${BACKEND_PORT}
     command: npm run dev
+    # tty: true
   
   backend:
     user: "${UID}:${GID}"
@@ -34,6 +37,7 @@ services:
     #   - db
     ports:
       - 127.0.0.1:${BACKEND_PORT}:8000
+
     volumes:
       - ./src/backend:/opt/backend
     # restart: always

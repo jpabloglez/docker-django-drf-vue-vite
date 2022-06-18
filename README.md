@@ -1,4 +1,4 @@
-# Vue3 (Vite) and Django (DRF)
+# Vue3 (Vite+Typescript) and Django (DRF)
   
 This will setup, using docker-compose, a basic Django + DRF + Vuejs `(vue-cli project)` project.
 * Reference: [django-drf-vuejs](https://github.com/devsar/django-drf-vuejs)
@@ -11,13 +11,14 @@ Create Django tables on DB:
   - `docker-compose run backend migrate`
 
 Create super user:
-Option A:
+- Option A:
 ``` 
 docker exec -it backend bash
 python manage.py createsuperuser
 - admin@admin.com
 - admin
 ````
+- Option B:
   - `docker-compose run backend createsuperuser`
 
 Start all containers:
@@ -105,3 +106,55 @@ DRF container uses `python:latest` (more info at `https://hub.docker.com/_/pytho
   - Let your `bash` knows where `excecutable` installed by `npm` are. Run: ` echo "export PATH=~/.npm-global/bin:$PATH" >> ~/.bashrc `. Apply changes made on `$PATH` running: `source ~/.bashrc`, or open a new terminal. 
   - Install `@vue-cli`, run: `npm install -g @vue/cli`
   - Install `@vue/cli-init`, run: `npm install -g @vue/cli-init`
+
+___________________________________________________________________________
+
+## Vue3+Vite webpack fresh install
+We are preparing the base components to develop our project
+
+* Reference: [Starting up a new Vue 3 project with Vite and Docker](https://dev.to/jiprochazka/starting-up-a-new-vue-3-project-with-vite-and-docker-3355)
+
+## Webpack with docker
+Follow next steps:
+```
+docker-compose up -d
+```
+Create a new Vite project inside container
+``` 
+docker exec -it frontend /bin/bash
+
+* Change app folder permissions
+chown 1000:1000 app
+# chown www-data:www-data app
+
+npm init @vitejs/app
+```
+When prompted select Vue as your favourite framework. Then, edit the vite.config.js by adding the server object:
+```js
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  server: {
+    port: 8000
+  },
+  plugins: [vue()]
+})
+```
+Also edit the started package.json file to add the host parameter
+```js
+...
+"scripts": {
+    "dev": "vite --host",
+...
+```
+
+You can now install de JS dependencies in your project
+```
+npm install
+```
+And you are ready to go:
+```
+npm run dev
+```
