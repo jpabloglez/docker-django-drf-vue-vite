@@ -1,15 +1,23 @@
-#  docker-django-drf-vue-vite
+# Vue3 (Vite) and Django (DRF)
+  
 This will setup, using docker-compose, a basic Django + DRF + Vuejs `(vue-cli project)` project.
 * Reference: [django-drf-vuejs](https://github.com/devsar/django-drf-vuejs)
 
-# First steps 
+## First steps 
 Start (and build if needed) containers with the command:
-  - `docker-compose up --build`
+  - `docker-compose up -d --build`
 
 Create Django tables on DB:
   - `docker-compose run backend migrate`
 
 Create super user:
+Option A:
+``` 
+docker exec -it backend bash
+python manage.py createsuperuser
+- admin@admin.com
+- admin
+````
   - `docker-compose run backend createsuperuser`
 
 Start all containers:
