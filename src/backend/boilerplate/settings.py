@@ -12,10 +12,11 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import datetime
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -26,6 +27,7 @@ SECRET_KEY = '6%hc3+^4=3phyx=86dqp%kl!g850jsv1keaw4u7tv(b&k_d324'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Reference: https://docs.djangoproject.com/en/4.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'graphene_django',
     'drf_yasg',
     'boilerplate_app',
+    'tasks',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -53,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'boilerplate.urls'
@@ -232,3 +237,6 @@ LOGGING = {
 GRAPHENE = {
     'SCHEMA': 'boilerplate.schema.schema'
 }
+
+# Give full access to the API to any other origins
+CORS_ALLOW_ALL_ORIGINS = True

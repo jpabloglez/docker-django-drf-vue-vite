@@ -1,14 +1,34 @@
+<!--
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/Tasks.vue'
+</script>
+-->
+
+<script>
+import Tasks from "./components/Tasks.vue";
+export default {
+  name: "App",
+  components: {
+    Tasks,
+  },
+};
 </script>
 
+<template>
+  <div id="app">
+    Tasks: <Tasks />
+  </div>
+</template>
+
+<!--
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
-
+-->
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -13,11 +13,10 @@ RUN usermod --non-unique --uid 1000 www-data \
 
 
 RUN npm install
-# RUN npm install axios
-# RUN chown -R $APP_USER:$APP_USER /var/www/html/app/frontend
-# RUN npm install @bundled-es-modules/axios --save
-# RUN yarn add axios
+
+# Add packages
 RUN npm install --save axios vue-axios
+# RUN npm install --save dicom.ts
 
 # USER www-data # Causes npm not to work
 
