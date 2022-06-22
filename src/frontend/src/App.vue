@@ -6,22 +6,27 @@
 import HelloWorld from './components/Tasks.vue'
 </script>
 -->
-
-<script>
-import Tasks from "./components/Tasks.vue";
-export default {
-  name: "App",
-  components: {
-    Tasks,
-  },
-};
-</script>
-
 <template>
+<div>
+  <Navbar></Navbar>
+</div>
   <div id="app">
-    Tasks: <Tasks />
+    Tasks: <Tasks/>
   </div>
 </template>
+
+<script>
+  import Tasks from "./components/Tasks.vue";
+  import Navbar from "./components/Navbar.vue";
+  export default {
+    name: "App",
+    components: {
+    Tasks,
+    Navbar
+},
+  };
+</script>
+
 
 <!--
 <template>
@@ -30,12 +35,12 @@ export default {
 </template>
 -->
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
