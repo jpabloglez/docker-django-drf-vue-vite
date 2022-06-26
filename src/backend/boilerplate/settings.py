@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'boilerplate_app',
     'tasks',
     'corsheaders',
+    'analyses',
 ]
 
 MIDDLEWARE = [

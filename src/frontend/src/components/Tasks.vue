@@ -2,7 +2,7 @@
     <div class="tasks_container">
         <div class="tasks_content">
             <!--<div id="card">-->
-            <h1> Tasks satatus</h1>
+            <h1> Tasks status</h1>
             <ul class="tasks_list">
                 <li v-for="task in tasks" :key="task.id">
                     <h2>title: {{ task.title }}</h2>
@@ -34,8 +34,13 @@ export default {
         console.log("LOG:", response.data)
         this.tasks = response.data
       })
+    /* Try to add Particles JS annimation
+    let particlesScript = document.createElement('script')
+    particlesScript.setAttribute('src', 'src/assets/js/particles.js')
+    document.head.appendChild(particlesScript)*/
   }
 }
+
 </script>
 
 <!--

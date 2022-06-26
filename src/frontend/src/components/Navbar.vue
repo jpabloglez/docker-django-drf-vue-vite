@@ -4,6 +4,6 @@
 
 <style>
 #navbar{
- background-color: aqua;   
+ background-color: lightblue;   
 }
 </style>

@@ -5,7 +5,7 @@ import Vue from 'vue';
 createApp(App).mount('#app');
 
 // import axios
-import axios from 'axios';
+//import axios from 'axios';
 
 //import Vueaxios from 'vue-axios';
 //App.use(Vueaxios, axios)

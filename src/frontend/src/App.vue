@@ -7,22 +7,40 @@ import HelloWorld from './components/Tasks.vue'
 </script>
 -->
 <template>
-<div>
-  <Navbar></Navbar>
-</div>
+  <div>
+    <Sidebar></Sidebar>
+  </div>
+  <div>
+    <Navbar></Navbar>
+  </div>
+  <!--
   <div id="app">
     Tasks: <Tasks/>
   </div>
+  -->
+  <div id="app">
+    Analyses: <Analyses/>
+  </div>
+  
 </template>
 
 <script>
-  import Tasks from "./components/Tasks.vue";
+  //import Tasks from "./components/Tasks.vue";
   import Navbar from "./components/Navbar.vue";
+  import Sidebar from "./components/Sidebar.vue";
+  import Analyses from "./components/Analyses.vue";
+  
+  // import Vue from Vue;
+  // Vue.loadScript("src/assets/js/particles.js")
+
+
   export default {
     name: "App",
     components: {
-    Tasks,
-    Navbar
+    Analyses,
+    Navbar,
+    Sidebar,
+    // Tasks,
 },
   };
 </script>

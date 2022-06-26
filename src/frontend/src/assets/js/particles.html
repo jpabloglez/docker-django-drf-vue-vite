@@ -1,0 +1,45 @@
+<!-- html:5 + Tab to insert template-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+    </style>
+    -->
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            }
+
+            .background {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <canvas class="background"></canvas>
+    <script src="particles.js"></script>
+    <script>
+        window.onload = function() {
+            Particles.init({
+                selector: '.background'
+            });
+        };
+    </script>
+</body>
+</html>
