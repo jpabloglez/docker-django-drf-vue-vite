@@ -13,6 +13,11 @@ import HelloWorld from './components/Tasks.vue'
   <div>
     <Navbar></Navbar>
   </div>
+  <br>
+  <div align="center">
+      <Tutorial></Tutorial>
+  </div>
+
   <!--
   <div id="app">
     Tasks: <Tasks/>
@@ -29,20 +34,21 @@ import HelloWorld from './components/Tasks.vue'
   import Navbar from "./components/Navbar.vue";
   import Sidebar from "./components/Sidebar.vue";
   import Analyses from "./components/Analyses.vue";
+  import Tutorial from "./components/tutorial/Tutorial.vue";
   
   // import Vue from Vue;
   // Vue.loadScript("src/assets/js/particles.js")
-
-
   export default {
     name: "App",
     components: {
-    Analyses,
-    Navbar,
-    Sidebar,
-    // Tasks,
-},
+      Analyses,
+      Navbar,
+      Sidebar,
+      Tutorial,
+      // Tasks,
+    },
   };
+
 </script>
 
 
@@ -52,6 +58,7 @@ import HelloWorld from './components/Tasks.vue'
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 -->
+
 <style>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -61,4 +68,5 @@ import HelloWorld from './components/Tasks.vue'
     color: #2c3e50;
     margin-top: 60px;
   }
+
 </style>

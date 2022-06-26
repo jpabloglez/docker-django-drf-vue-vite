@@ -158,3 +158,13 @@ And you are ready to go:
 ```
 npm run dev
 ```
+
+## DB Postgres
+In order to setup the backend with the Postgres DB it is necessary to edit the DB properties in the settings.py file
+References: [in this link](https://learndjango.com/tutorials/django-docker-and-postgresql-tutorial)
+
+Also, we will need to build up, in the first place, the db service for Postgres in the docker-compose.yml without declaring a volume to store db files. Then we can migrate the models running backend service:
+```
+docker exec backend python manage.py migrate
+```
+And then build-up again the Postgres service using the appropiate volume to store db files.
