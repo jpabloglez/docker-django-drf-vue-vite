@@ -18,11 +18,11 @@ import HelloWorld from './components/Tasks.vue'
       <Tutorial></Tutorial>
   </div>
 
-  <!--
+
   <div id="app">
     Tasks: <Tasks/>
   </div>
-  -->
+
   <div id="app">
     Analyses: <Analyses/>
   </div>
@@ -30,14 +30,12 @@ import HelloWorld from './components/Tasks.vue'
 </template>
 
 <script>
-  //import Tasks from "./components/Tasks.vue";
+  import Tasks from "./components/Tasks.vue";
   import Navbar from "./components/Navbar.vue";
   import Sidebar from "./components/Sidebar.vue";
   import Analyses from "./components/Analyses.vue";
   import Tutorial from "./components/tutorial/Tutorial.vue";
   
-  // import Vue from Vue;
-  // Vue.loadScript("src/assets/js/particles.js")
   export default {
     name: "App",
     components: {
@@ -45,19 +43,11 @@ import HelloWorld from './components/Tasks.vue'
       Navbar,
       Sidebar,
       Tutorial,
-      // Tasks,
+      Tasks,
     },
   };
 
 </script>
-
-
-<!--
-<template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-</template>
--->
 
 <style>
   #app {

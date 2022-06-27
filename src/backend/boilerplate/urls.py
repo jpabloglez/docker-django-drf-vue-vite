@@ -21,7 +21,7 @@ from graphene_django.views import GraphQLView
 
 urlpatterns = [
                 path('admin/', admin.site.urls),
-                # path('api/', include("tasks.urls")),
+                path('api/', include("tasks.urls")),
                 path('api/', include("analyses.urls")),
                 path('api/v1.0/boilerplate_apps/',
                     include("boilerplate_app.urls", namespace="boilerplate_app-api")),

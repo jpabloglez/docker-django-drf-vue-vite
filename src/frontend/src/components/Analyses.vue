@@ -26,11 +26,11 @@ import axios from 'axios';
             async getData() {
                 try {
                     const response = await axios.get('http://localhost:8000/api/analyses/');
-                    console.log("LOG", response)
+                    console.log("LOG", response);
                     this.analyses = response.data; 
                 } catch (error) {
                     console.log(error);
-                    this.errors.push(e)
+                    this.errors.push(e);
                 }
             },
         },

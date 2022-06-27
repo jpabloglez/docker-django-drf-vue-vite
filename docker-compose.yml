@@ -1,31 +1,25 @@
 version: '3'
 
 services:
-  frontend:
-    # user: "${UID}:${GID}"
-    build:
-      context: .
-      dockerfile: dockerfiles/Dockerfile.frontend
-    image: frontend
-    container_name: frontend
-    # entrypoint: /entrypoint.sh
-    depends_on:
-      -  backend
-    # ports:
-    #  - 127.0.0.1:${FRONTEND_PORT}:8080
-    ports:
-      - 127.0.0.1:8080:8080
+
+  db:
+    image: postgres:latest
+    container_name: db
+    restart: unless-stopped
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data/
     volumes:
-      - ./src/frontend:/opt/frontend
-    # environment:
-    #   - HOST=0.0.0.0
-    #   - PORT=${FRONTEND_PORT}
-    #   - CHOKIDAR_USEPOLLING=true
-    #   - API_HOST=${BACKEND_RUNNING_ON}
-    #   - API_PORT=${BACKEND_PORT}
-    command: npm run dev
-    # tty: true
-  
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+    ports:
+      - 127.0.0.1:5432:5432
+    networks:
+      - backend_network
+
   backend:
     user: "${UID}:${GID}"
     build:
@@ -51,23 +45,39 @@ services:
     #  - POSTGRES_PASSWORD=secret
     command: compose/uwsgi_aws.sh
     #command: /start-dev.sh
+    networks:
+      - backend_network
 
-  
-  db:
-    image: postgres:latest
-    container_name: db
-    restart: unless-stopped
-    # volumes:
-    #   - pgdata:/var/lib/postgresql/data/
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+  frontend:
+    # user: "${UID}:${GID}"
+    build:
+      context: .
+      dockerfile: dockerfiles/Dockerfile.frontend
+    image: frontend
+    container_name: frontend
+    # entrypoint: /entrypoint.sh
+    depends_on:
+      -  backend
+    # ports:
+    #  - 127.0.0.1:${FRONTEND_PORT}:8080
     ports:
-      - 127.0.0.1:5432:5432
+      - 127.0.0.1:8080:8080
+    volumes:
+      - ./src/frontend:/opt/frontend
+    # environment:
+    #   - HOST=0.0.0.0
+    #   - PORT=${FRONTEND_PORT}
+    #   - CHOKIDAR_USEPOLLING=true
+    #   - API_HOST=${BACKEND_RUNNING_ON}
+    #   - API_PORT=${BACKEND_PORT}
+    command: npm run dev
+    # tty: true
+  
+  
+networks:
+  backend_network:
+    name: backend_network
+
 
 # volumes:
 #  pgdata:

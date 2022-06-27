@@ -22,9 +22,18 @@
                 <p> v-html="htmlTag" </p>
                 <!-- On click directive-->
                 <div>
-                    <button id="buttom" v-on:click="Add"> Add element </button> - <button id="buttom" v-on:click="Remove"> Remove element </button>
+                    <button id="buttom" v-on:click="Add(2)"> Add element </button> - <button id="buttom" v-on:click="Remove(1)"> Remove element </button>
                 </div>
                 <h2> Counter: {{ counter }}</h2>
+                <!-- Listener to input data-->
+                <input type="text" v-on:input="setName($event, 'PEREZ')">
+                <!-- Show the data inserted by user -->
+                <p> Your name: {{ name }} </p>
+                <!-- Event modifiers-->
+                <form id="form">
+                    <input type="text">
+                    <button> Sign up </button>
+                </form>
             
                 
             </section>
@@ -46,6 +55,7 @@
                 optionA: "Ha salido menor que 0.5 (opción A)",
                 optionB: "Ha salido >= 0.5 (opción B)",
                 counter: 0,
+                name: "",
             }
         },
 
@@ -59,11 +69,14 @@
                     return this.optionB
                 }
             },
-            Add(){
-                this.counter ++;
+            Add(num){
+                this.counter += num;
             },
-            Remove(){
-                this.counter --;
+            Remove(num){
+                this.counter -= num;
+            },
+            setName(event, lastName){
+                this.name = event.target.value + ' ' + lastName;
             },
         }
 
@@ -75,6 +88,10 @@
 /*
 * Here it is defined the styling 
 */
+
+/* Import CSS from assets files */
+@import "../../assets/css/buttoms.css";
+
   #section-borders{
     background-color: lightcyan;
     align-self: center;
@@ -87,5 +104,13 @@
     background-color: lightpink;
     border-radius: 10px;
   }
-
+  #form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px;
+    background-color: lightpink;
+  }
+    
 </style>
+
