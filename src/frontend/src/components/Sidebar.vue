@@ -98,7 +98,7 @@
 
 <script>
   export default {
-    name: 'SidebarMenuAkahon',
+    name: 'Sidebar',
     props: {
       //! Menu settings
       isMenuOpen: {
@@ -203,11 +203,11 @@
       },
       profileName: {
         type: String,
-        default: 'Fayzullo Saidakbarov',
+        default: 'User',
       },
       profileRole: {
         type: String,
-        default: 'Frontend vue developer',
+        default: 'Admin',
       },
       isExitButton: {
         type: Boolean,
@@ -216,7 +216,7 @@
       //! Styles
       bgColor: {
         type: String,
-        default: 'lightblue', //#11101d #CAMBIO
+        default: 'lightskyblue', //#11101d #CAMBIO
       },
       secondaryColor: {
         type: String,

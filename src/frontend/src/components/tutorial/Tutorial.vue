@@ -10,47 +10,60 @@
         <title>Document</title>
     </head>
     <body>
-        <div id="section-borders">
-            <section id="say-hello">
-                <!-- Data interpolation example-->
-                <p> <b>Mensaje:</b> {{ message }}</p>
-                <!-- Data binding example -->
-                <h3> Visit Vue reference: <a v-bind:href="vue_link"> about Vue </a></h3>
-                <!-- Show the result of applying a method-->
-                <p> Resultado aleatorio: {{ selectOption() }} </p>
-                <!-- HTML binding in order to include html elements-->
-                <p> v-html="htmlTag" </p>
-                <!-- On click directive-->
-                <div>
-                    <button id="buttom" v-on:click="Add(2)"> Add element </button> - <button id="buttom" v-on:click="Remove(1)"> Remove element </button>
+        <!-- Insert Sidebar component -->
+        <sidebar></sidebar>
+            <div id="section-borders">
+                <div id="btest">
+                    <!-- Bootstrapp buttom -->
+                    <button class="btn btn-primary"> Bootstrapp </button>
+                    <!-- User router to link page -->
+                    <button id="buttom" @click="$router.push('Analyses')">Analyses</button>
                 </div>
-                <h2> Counter: {{ counter }}</h2>
-                <!-- Listener to input data-->
-                <input type="text" v-on:input="setName($event, 'PEREZ')">
-                <!-- Show the data inserted by user -->
-                <p> Your name: {{ name }} </p>
-                <!-- Event modifiers-->
-                <form id="form">
-                    <input type="text">
-                    <button> Sign up </button>
-                </form>
-            
-                
-            </section>
-        </div>
+                <section id="say-hello">
+                    <!-- Data interpolation example-->
+                    <p> <b>Mensaje:</b> {{ message }}</p>
+                    <!-- Data binding example -->
+                    <h3> Visit Vue reference: <a v-bind:href="vue_link"> about Vue </a></h3>
+                    <!-- Show the result of applying a method-->
+                    <p> Resultado aleatorio: {{ selectOption() }} </p>
+                    <!-- HTML binding in order to include html elements-->
+                    <p> v-html="htmlTag" </p>
+                    <!-- On click directive-->
+                    <div>
+                        <button id="buttom" v-on:click="Add(2)"> Add element </button> - <button id="buttom" v-on:click="Remove(1)"> Remove element </button>
+                    </div>
+                    <h2> Counter: {{ counter }}</h2>
+                    <!-- Listener to input data-->
+                    <input type="text" v-on:input="setName($event, 'PEREZ')">
+                    <!-- Show the data inserted by user -->
+                    <p> Your name: {{ name }} </p>
+                    <!-- Event modifiers-->
+                    <form id="form">
+                        <input type="text">
+                        <button> Sign up </button>
+                    </form>
+                </section>
+            </div>
     </body>
     </html>
 </template>
 
 <script>
 
-    import Analyses from "../Analyses.vue";
-    import Navbar from "../Navbar.vue";
+import Analyses from '../Analyses.vue';
+import Sidebar from "../Sidebar.vue";
 
-    export default {
+export default {
         /*
         Data container to be exported
         */
+        name: 'Tutorial', // Name of the current component
+        // Load other components
+        components: {
+            'sidebar': Sidebar,
+            'analyses': Analyses,
+        },
+
         data() {
             return {
                 message: "Hola Caracola",
@@ -83,12 +96,6 @@
                 this.name = event.target.value + ' ' + lastName;
             },
         },
-        
-        components: {
-            Analyses, 
-            Navbar,
-        }
-
     }
 
 </script>
@@ -102,12 +109,14 @@
 @import "../../assets/css/buttoms.css";
 
   #section-borders{
+    /*display: flex;*/
     background-color: lightcyan;
     align-self: center;
-    width: 80%;
-    height: 40%;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
     border-color: lightcyan;
+    padding: 20px 20px 20px 20px;
   }
   #buttom{
     background-color: lightpink;
@@ -119,6 +128,28 @@
     align-items: center;
     padding: 15px 15px;
     background-color: lightpink;
+  }
+
+  #say-hello{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 15px;
+  }
+
+  #btest{
+    background-color: lightskyblue;
+    border-radius: 10px;
+    padding: 20px 20px;
+  }
+
+  #container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
   }
     
 </style>

@@ -11,6 +11,11 @@ import Login from './components/login/Login.vue';
 import Analyses from './components/Analyses.vue';
 import Tutorial from './components/tutorial/Tutorial.vue';
 
+//import DashboardPlugin from '@/plugins/blackDashboard'
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
+
 // Create the router app
 const router = createRouter({
     history: createWebHistory(),
@@ -25,6 +30,7 @@ const router = createRouter({
 const app = createApp(App); 
 
 app.use(router);
+//app.use(DashboardPlugin)
 
 app.mount('#app'); 
 
