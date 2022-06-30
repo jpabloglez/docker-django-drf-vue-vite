@@ -43,6 +43,10 @@
 </template>
 
 <script>
+
+    import Analyses from "../Analyses.vue";
+    import Navbar from "../Navbar.vue";
+
     export default {
         /*
         Data container to be exported
@@ -78,6 +82,11 @@
             setName(event, lastName){
                 this.name = event.target.value + ' ' + lastName;
             },
+        },
+        
+        components: {
+            Analyses, 
+            Navbar,
         }
 
     }

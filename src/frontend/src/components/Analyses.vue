@@ -1,12 +1,9 @@
 <template>
     <div class="analyses_container">
         <div class="analyses_content">
-            <h1> Analyses </h1>
             <ul class="analyses_list">
                 <li v-for="analysis in analyses" :key="analysis.id">
-                    <h3>Description: {{ analysis.description }}</h3>
-                    <h3>Modality: {{ analysis.modality }}</h3>
-                    <h3>Customer: {{ analysis.customer }}</h3>
+                    <p> <b>Description:</b> {{ analysis.description }} - <b>Modality:</b> {{ analysis.modality }} <b>Customer:</b> {{ analysis.customer }} </p>
                 </li>
             </ul>
         </div>
@@ -14,7 +11,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+    import axios from 'axios';
     export default {
         data() {
             return {
@@ -47,4 +44,8 @@ import axios from 'axios';
     background-color: lightcyan;
     }
     */
+
+    .analyses_container {
+        background-color: lightgray;
+    }
 </style>

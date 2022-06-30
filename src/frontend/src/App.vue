@@ -6,6 +6,8 @@
 import HelloWorld from './components/Tasks.vue'
 </script>
 -->
+
+<!--
 <template>
   <div>
     <Sidebar></Sidebar>
@@ -17,16 +19,19 @@ import HelloWorld from './components/Tasks.vue'
   <div align="center">
       <Tutorial></Tutorial>
   </div>
-
-
-  <div id="app">
-    Tasks: <Tasks/>
-  </div>
-
-  <div id="app">
-    Analyses: <Analyses/>
-  </div>
   
+  <div id="app"> <h2> Tasks </h2> <Tasks/> </div>
+  
+  <div id="app">  <h2> Analyses </h2> <Analyses/>  </div>
+  
+</template>
+-->
+
+<template>
+  <!--<the-navigation @set-page="setActivePage"></the-navigation>-->
+  <main>
+    <router-view></router-view>
+  </main>
 </template>
 
 <script>
