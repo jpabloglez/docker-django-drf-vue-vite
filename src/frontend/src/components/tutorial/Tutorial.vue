@@ -1,5 +1,3 @@
-
-
 <template>
     <!DOCTYPE html>
     <html lang="en">
@@ -9,41 +7,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
     </head>
+    <!-- <body id="backpic">-->
+    <!--<body style="background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgb(137, 214, 255) 91.1% )">-->
     <body>
         <!-- Insert Sidebar component -->
-        <sidebar></sidebar>
-            <div id="section-borders">
-                <div id="btest">
-                    <!-- Bootstrapp buttom -->
-                    <button class="btn btn-primary"> Bootstrapp </button>
-                    <!-- User router to link page -->
-                    <button id="buttom" @click="$router.push('Analyses')">Analyses</button>
-                </div>
-                <section id="say-hello">
-                    <!-- Data interpolation example-->
-                    <p> <b>Mensaje:</b> {{ message }}</p>
-                    <!-- Data binding example -->
-                    <h3> Visit Vue reference: <a v-bind:href="vue_link"> about Vue </a></h3>
-                    <!-- Show the result of applying a method-->
-                    <p> Resultado aleatorio: {{ selectOption() }} </p>
-                    <!-- HTML binding in order to include html elements-->
-                    <p> v-html="htmlTag" </p>
-                    <!-- On click directive-->
-                    <div>
-                        <button id="buttom" v-on:click="Add(2)"> Add element </button> - <button id="buttom" v-on:click="Remove(1)"> Remove element </button>
-                    </div>
-                    <h2> Counter: {{ counter }}</h2>
-                    <!-- Listener to input data-->
-                    <input type="text" v-on:input="setName($event, 'PEREZ')">
-                    <!-- Show the data inserted by user -->
-                    <p> Your name: {{ name }} </p>
-                    <!-- Event modifiers-->
-                    <form id="form">
-                        <input type="text">
-                        <button> Sign up </button>
-                    </form>
-                </section>
+        <!--<background></background>-->
+        <div id="section-borders">
+            <sidebar></sidebar>
+            <div id="btest">
+                <!-- Bootstrapp buttom -->
+                <button class="btn btn-primary"> Bootstrapp </button>
+                <!-- User router to link page -->
+                <button id="buttom" @click="$router.push('Analyses')">Analyses</button>
             </div>
+            <section id="say-hello">
+                <!-- Data interpolation example-->
+                <p> <b>Mensaje:</b> {{ message }}</p>
+                <!-- Data binding example -->
+                <h3> Visit Vue reference: <a v-bind:href="vue_link"> about Vue </a></h3>
+                <!-- Show the result of applying a method-->
+                <p> Resultado aleatorio: {{ selectOption() }} </p>
+                <!-- HTML binding in order to include html elements-->
+                <p> v-html="htmlTag" </p>
+                <!-- On click directive-->
+                <div>
+                    <button id="buttom" v-on:click="Add(2)"> Add element </button> - <button id="buttom" v-on:click="Remove(1)"> Remove element </button>
+                </div>
+                <h2> Counter: {{ counter }}</h2>
+                <!-- Listener to input data-->
+                <input type="text" v-on:input="setName($event, 'PEREZ')">
+                <!-- Show the data inserted by user -->
+                <p> Your name: {{ name }} </p>
+                <!-- Event modifiers-->
+                <form id="form">
+                    <input type="text">
+                    <button> Sign up </button>
+                </form>
+            </section>
+        </div>
     </body>
     </html>
 </template>
@@ -52,6 +53,7 @@
 
 import Analyses from '../Analyses.vue';
 import Sidebar from "../Sidebar.vue";
+/*import Background from "../Background.vue";*/
 
 export default {
         /*
@@ -62,6 +64,7 @@ export default {
         components: {
             'sidebar': Sidebar,
             'analyses': Analyses,
+            //'background': Background,
         },
 
         data() {
@@ -107,50 +110,11 @@ export default {
 
 /* Import CSS from assets files */
 @import "../../assets/css/buttoms.css";
+@import "../../assets/css/base.css";
+/*@import "../../assets/css/background.css";*/
+@import "../../assets/css/html.css";
 
-  #section-borders{
-    /*display: flex;*/
-    background-color: lightcyan;
-    align-self: center;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border-color: lightcyan;
-    padding: 20px 20px 20px 20px;
-  }
-  #buttom{
-    background-color: lightpink;
-    border-radius: 10px;
-  }
-  #form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 15px;
-    background-color: lightpink;
-  }
-
-  #say-hello{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 15px;
-  }
-
-  #btest{
-    background-color: lightskyblue;
-    border-radius: 10px;
-    padding: 20px 20px;
-  }
-
-  #container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    background-color: lightgray;
-  }
+  
     
 </style>
 

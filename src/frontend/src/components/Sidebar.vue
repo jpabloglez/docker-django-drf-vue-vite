@@ -311,8 +311,8 @@
     flex-direction: column;
     position: fixed;
     left: 0;
-    top: 0;
-    height: 100%;
+    top: 5%;
+    height: 90%;
     min-height: min-content;
     /* overflow-y: auto; */
     width: 78px;
@@ -320,6 +320,7 @@
     /* padding: 6px 14px 0 14px; */
     z-index: 99;
     transition: all 0.5s ease;
+    border-radius: 1vw;
   }
   .sidebar.open {
     width: 250px;
@@ -488,6 +489,8 @@
     background: var(--secondary-color);
     transition: all 0.5s ease;
     overflow: hidden;
+    border-radius: 1vw;
+
   }
   
   .sidebar.open div.profile {

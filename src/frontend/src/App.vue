@@ -42,7 +42,7 @@ import HelloWorld from './components/Tasks.vue'
   import Tutorial from "./components/tutorial/Tutorial.vue";
   
   export default {
-    name: "App",
+    name: "Base",
     components: {
       Analyses,
       Navbar,

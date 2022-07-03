@@ -16,15 +16,7 @@
                       style="position: relative; top: -10px">
                     <i class="fa fa-plus" aria-hidden="true"></i> {{ $t('analysis.lesions') }}
                 </span>
-                <!--
-                <span id="show-modal_vol_wmles"
-                      @click="newAnalysis('vol_wmles')"
-                      class="btn btn-danger"
-                      :class="{ 'disabled': user.analyses_left === 0 || user.permissions.indexOf('analysis-new') === -1}"
-                      style="position: relative; top: -10px">
-                    <i class="fa fa-plus" aria-hidden="true"></i> {{ $t('analysis.atrophy_lesions') }}
-                </span>
-                -->
+
                 <span class="text-right" style="position: relative; top: -10px">
                     <dropdown>
                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdown-actions-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
@@ -34,15 +26,7 @@
                             <span class="caret"></span>
                         </button>
                         <template slot="dropdown">
-                          <!--
-                            <li style="cursor: pointer">
-                                <a id="show-modal_longitudinal_vol"
-                                   @click="searchAnalysis('vol')"
-                                   :class="{ 'disabled': user.analyses_left === 0 || user.permissions.indexOf('analysis-new') === -1}">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                    {{ $t('analysis.atrophy') }}
-                                </a>
-                            </li>-->
+
                             <li style="cursor: pointer">
                                 <a id="show-modal_longitudinal_wmles"
                                    @click="searchAnalysis('wmles')"
@@ -165,20 +149,7 @@
                     </div>
                 </div>
                 <div style="height: 20px; width: 100%"></div>
-                <ul v-show="stop" class="nav nav-tabs nav-justified">
-                  <!--
-                    <li style="cursor:pointer" @click="showTab('vol')"  class="nav-item" v-bind:class="{ active: tab.vol }">
-                        <a class="nav-link">{{$t('analysis.atrophy')}}</a>
-                    </li>
-                    <li style="cursor:pointer" @click="showTab('wmles')" class="nav-item"  v-bind:class="{ active: tab.wmles }">
-                        <a class="nav-link">{{$t('analysis.lesions')}}</a>
-                    </li>
-
-                    <li style="cursor:pointer" @click="showTab('vol_wmles')" class="nav-item"  v-bind:class="{ active: tab.vol_wmles }">
-                        <a class="nav-link">{{$t('analysis.atrophy_lesions')}}</a>
-                    </li>
-                    -->
-                </ul>
+                <ul v-show="stop" class="nav nav-tabs nav-justified"></ul>
                 <div v-show="show" style="padding-top: 30px">
                     <div  class="text-center">
                         <scaleLoader

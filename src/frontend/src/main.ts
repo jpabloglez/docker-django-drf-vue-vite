@@ -10,6 +10,7 @@ import Login from './components/login/Login.vue';
 //import Signup from './components/login/Signup.vue';
 import Analyses from './components/Analyses.vue';
 import Tutorial from './components/tutorial/Tutorial.vue';
+//import Base from './App.vue';
 
 //import DashboardPlugin from '@/plugins/blackDashboard'
 
@@ -23,6 +24,7 @@ const router = createRouter({
         { path: '/', component: Tutorial },
         { path: '/login', component: Login },
         { path: '/analyses', component: Analyses },
+        { path: '/app', component: App },
     ]
 });
 
@@ -35,3 +37,4 @@ app.use(router);
 app.mount('#app'); 
 
 // createApp(App).mount('#app'); // this can also do the trick
+//{ path: '/analyses', component: Analyses },
