@@ -1,9 +1,12 @@
 body{
-    flex:content;
-    width: 90%;
+    display: block;
+    width: 100%;
+    align-self: center;
 }
 #section-borders{
-    /*display: flex;*/
+    /*display: flex;
+    flex: auto;*/
+    display: block;
     flex: auto;
     background-color: lightcyan;
     align-self: center;

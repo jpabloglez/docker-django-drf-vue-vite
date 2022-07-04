@@ -7,8 +7,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Analyses</title>
     </head>
-    <body>
-        <sidebar></sidebar>
+    <body style="display: inline; width: auto;">
+        <div>
+            <sidebar></sidebar>
+        </div>
         <!-- Insert Sidebar component -->
             <div id="section-borders">
                 <div id="btest">
@@ -17,22 +19,29 @@
                     <!-- User router to link page -->
                     <button id="buttom" @click="$router.push('/')">Tutorial</button>
                 </div>
-                <section id="say-hello">
+                <!-- Cards section -->
+                <section id="cards_section">
                     <div class="analyses_container">
                         <div class="analyses_content">
                             <ul class="analyses_list">
                                 <li v-for="analysis in analyses" :key="analysis.id"> 
-                                <b>Description:</b> {{ analysis.description }} - <b>Modality:</b> {{ analysis.modality }} <b>Customer:</b> {{ analysis.customer }}
+                                <div id="card">
+                                    <div class="card-body">
+                                        <p class="card-text"><b>Description:</b> {{ analysis.description }} - <b>Modality:</b> {{ analysis.modality }} <b>Customer:</b> {{ analysis.customer }}</p>
+                                        <button id="buttom" @click="$router.push('/')">Results</button>
+                                    </div>
+                                </div>
+                                
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </section>
+
             </div>
     </body>
     </html>
 </template>
-
 
 <script>
     import Sidebar from "./Sidebar.vue";
@@ -74,7 +83,7 @@
     @import "../assets/css/base.css";
 
     .analyses_container {
-        display: flex;
+        width: 100%;
         background-color: lightcyan;
     }
     .analyses_content {
@@ -84,10 +93,28 @@
         align-content: center;
     }
     .analysis_list {
+        width: 100%;
         align-content: center;
         list-style: none;
+        background-color: lightcyan;
         padding: 0;
     }
+    
+    #cards_section{
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #card{
+        width: 100%;
+        background-color: lightcyan;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 10px;
+    }
+
     ul {
         text-align: center;
         list-style-position: inside;
