@@ -49,6 +49,13 @@ INSTALLED_APPS = [
     'tasks',
     'corsheaders',
     'analyses',
+    'authenticate',
+    'login',
+    'allauth',
+    'allauth.account',
+    'rest_auth.registration',
+    # 'django-auth',
+    'api.apps.ApiConfig', 
 ]
 
 MIDDLEWARE = [
@@ -123,15 +130,18 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-    ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        #'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
-    'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
-    'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_PERMISSION_CLASSES': (
+    ),
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated',
+    # ],
+    # 'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
+    # 'COERCE_DECIMAL_TO_STRING': False,
 }
 
 
@@ -252,5 +262,40 @@ GRAPHENE = {
     'SCHEMA': 'boilerplate.schema.schema'
 }
 
+
+### CORS configuration
+
 # Give full access to the API to any other origins
 CORS_ALLOW_ALL_ORIGINS = True
+
+"""
+
+# Restrict access to the API to a specific origin 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8080',
+    'http://127.0.0.1:8080',
+]
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+CORS_ALLOW_CREDENTIALS = True
+
+ACCOUNT_EMAIL_VERIFICATION = None
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "authenticate.serializers.UserDetailsSerializer",
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "authenticate.serializers.UserRegisterSerializer",
+}
+
+##############################################
+# Reference: https://testdriven.io/blog/django-spa-auth/
+CSRF_COOKIE_SAMESITE = 'Strict'
+SESSION_COOKIE_SAMESITE = 'Strict'
+CSRF_COOKIE_HTTPONLY = False  # False since we will grab it via universal-cookies
+SESSION_COOKIE_HTTPONLY = True
+# NOTE => PROD ONLY
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+"""

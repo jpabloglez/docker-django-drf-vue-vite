@@ -20,13 +20,18 @@ from django.urls import path, include
 from graphene_django.views import GraphQLView
 
 from rest_auth.views import LoginView, LogoutView
+from login import views as login_views
 
 urlpatterns = [
                 path('admin/', admin.site.urls),
+                # path('api/login', include('api.urls')),
                 path('api/', include("tasks.urls")),
                 path('api/', include("analyses.urls")),
                 path('api-auth/', include('rest_framework.urls')),
                 path('api/rest-auth/', include('rest_auth.urls')),
+                # path('users/', include('authenticate.urls')),
+                # path('login/', include('login.urls')),
+
                 path('api/v1.0/boilerplate_apps/',
                     include("boilerplate_app.urls", namespace="boilerplate_app-api")),
                     path("graphql/", GraphQLView.as_view(graphiql=True)),

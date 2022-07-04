@@ -1,15 +1,17 @@
 import logging
 from datetime import datetime
 import json
-
+import sys
+from typing import Union
 
 class CustomLogger():
 
-    def __init__(self):
-        self.logger = logging.getLogger("master_app")
-        self.app = "master_app"
+    def __init__(self, app: str = "backend"):
+        self.app = app
+        self.logger = logging.getLogger(app)# .addHandler(logging.StreamHandler(sys.stdout))
 
-    def log_info(self, request_id, message, http_method, api_path, data, app_name):
+#    def log_info(self, request_id, message, http_method, api_path, data, app_name):
+    def log_info(self, message: str, request_id: str, http_method: str, api_path, data, app_name):
         
         logging.basicConfig(format='%(message)s', filename=self.app + '.log', level=logging.INFO)
         today = datetime.now()
@@ -56,6 +58,17 @@ class CustomLogger():
         else:
             self.logger.error(app_name.upper() + " " + request_id + " " + date_time + " " + http_method.upper() + " " + api_path + " " + message)
 
+        
+class BasicCustomLogger(CustomLogger):
+    def __init__(self, app: str = "backend"):
+        super().__init__(app)
+        # logging.basicConfig(format='%(message)s', filename=self.app + '.log', level=logging.INFO)
+        self.logger = logging.getLogger(app)# .addHandler(logging.StreamHandler(sys.stdout))
+        self.format = '%(asctime)s | %(levelname)s | %(name)s | %(funcName)s | %(lineno)d \n %(message)s'
+
+    def log_info(self, message: str):
+        logging.basicConfig(encoding='utf-8', level=logging.INFO, format=self.format)
+        self.logger.info(message)
 
 class DatabaseCustomLogger():
 
