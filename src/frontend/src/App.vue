@@ -1,39 +1,58 @@
+<template>
 <!--
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-// import HelloWorld from './components/HelloWorld.vue'
-import HelloWorld from './components/Tasks.vue'
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" href="#">Features</a>
+              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </body>
+  -->
+    <!--<router-view></router-view>-->
+      <div style="display: inline;">
+        <router-link to="/SignUp">Sign Up</router-link>
+      </div>
+      <div>
+        <router-link to="/LogIn">Log In</router-link>
+      </div>
+
+      <router-view></router-view>
+</template>
+
+<script>
+  import axios from 'axios';
+
+  import LogIn from "./components/login/LogIn.vue";
+  import SignUp from "./components/login/SignUp.vue";
+  
+  export default {
+    name: "App",
+    beforeCreate(){
+      this.$store.commit('initializeStore');
+      const token = this.$store.state.token
+
+      if ( token ){
+        axios.defaults.headers.common['Authorization'] = "Token " + token;
+      } else {
+        axios.defaults.headers.common['Authorization'] = " ";
+      }
+  }
+}
 </script>
--->
+
 
 <!--
-<template>
-  <div>
-    <Sidebar></Sidebar>
-  </div>
-  <div>
-    <Navbar></Navbar>
-  </div>
-  <br>
-  <div align="center">
-      <Tutorial></Tutorial>
-  </div>
-  
-  <div id="app"> <h2> Tasks </h2> <Tasks/> </div>
-  
-  <div id="app">  <h2> Analyses </h2> <Analyses/>  </div>
-  
-</template>
--->
-
-<template>
-  <!--<the-navigation @set-page="setActivePage"></the-navigation>-->
-  <main>
-    <router-view></router-view>
-  </main>
-</template>
-
 <script>
   import Tasks from "./components/Tasks.vue";
   import Navbar from "./components/Navbar.vue";
@@ -51,8 +70,9 @@ import HelloWorld from './components/Tasks.vue'
       Tasks,
     },
   };
-
+*/
 </script>
+-->
 
 <style>
   #app {
@@ -65,3 +85,4 @@ import HelloWorld from './components/Tasks.vue'
   }
 
 </style>
+
