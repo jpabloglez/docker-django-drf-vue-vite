@@ -31,8 +31,9 @@ urlpatterns = [
                 path('api/rest-auth/', include('rest_auth.urls')),
                 # path('users/', include('authenticate.urls')),
                 # path('login/', include('login.urls')),
-
-                path('api/v1.0/boilerplate_apps/',
-                    include("boilerplate_app.urls", namespace="boilerplate_app-api")),
-                    path("graphql/", GraphQLView.as_view(graphiql=True)),
+                path('api/v1/', include('djoser.urls')),
+                path('api/v1/', include('djoser.urls.authtoken')),
+                # path('api/v1.0/boilerplate_apps/',
+                #     include("boilerplate_app.urls", namespace="boilerplate_app-api")),
+                #     path("graphql/", GraphQLView.as_view(graphiql=True)),
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

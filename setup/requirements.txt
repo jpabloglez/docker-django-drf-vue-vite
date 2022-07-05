@@ -71,3 +71,4 @@ pytest==7.1.2
 Faker==13.14.0
 django-rest-auth==0.9.5
 requests==2.27.1
+djoser==2.1.0

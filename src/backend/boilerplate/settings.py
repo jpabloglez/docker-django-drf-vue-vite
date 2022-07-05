@@ -136,10 +136,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-    ),
-    # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    # ],
+        'rest_framework.permissions.IsAuthenticated',
+    )
     # 'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
     # 'COERCE_DECIMAL_TO_STRING': False,
 }
@@ -266,15 +264,16 @@ GRAPHENE = {
 ### CORS configuration
 
 # Give full access to the API to any other origins
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
-"""
 
 # Restrict access to the API to a specific origin 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8080',
+    'http://localhost:8080', # Frontend
+    'http://127.0.0.1:8000', # Backend
 ]
+
+"""
 CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
 CORS_ALLOW_CREDENTIALS = True
 
