@@ -72,6 +72,8 @@ services:
     #   - API_PORT=${BACKEND_PORT}
     command: npm run dev
     # tty: true
+    networks:
+      - backend_network
   
   
 networks:

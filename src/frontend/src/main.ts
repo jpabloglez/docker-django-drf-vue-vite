@@ -1,11 +1,25 @@
+import App from './App.vue';
+
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import store from './store';
 import axios from 'axios';
+//import DashboardPlugin from '@/plugins/blackDashboard'
+
+//import Vue from 'vue';
+//import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+//import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+//import "bootstrap" ;
+//import "bootstrap/dist/css/bootstrap.min.css";
+
 
 //axios.defaults.baseURL = 'http://localhost:8080';
 
-import App from './App.vue';
 //import App from './components/tutorial/Tutorial.vue';
 //import Vue from 'vue';
 
@@ -16,11 +30,11 @@ import SignUp from './components/login/SignUp.vue';
 import SignIn from './components/login/SignIn.vue';
 import Analyses from './components/Analyses.vue';
 import Tutorial from './components/tutorial/Tutorial.vue';
+//import Drop from './components/tutorial/Drop.vue';
+
 //import Base from './App.vue';
 
-//import DashboardPlugin from '@/plugins/blackDashboard'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap";
+
 
 // Create the router app
 const router = createRouter({
@@ -28,12 +42,12 @@ const router = createRouter({
     routes: [
         { 
             path: '/', 
-            name: 'Index',
+            name: 'Home',
             component: Tutorial 
         },
         { 
             path: '/SignIn', 
-            name: 'SigIn',
+            name: 'SignIn',
             component: SignIn 
         },
         { 
@@ -45,6 +59,11 @@ const router = createRouter({
             path: '/SignUp', 
             name: 'SignUp',
             component: SignUp 
+        },
+        { 
+            path: '/Analyses', 
+            name: 'Analyses',
+            component: Analyses 
         },
         //{ path: '/login', component: LogIn },
         //{ path: '/analyses', component: Analyses },
@@ -59,6 +78,9 @@ const app = createApp(App);
 app.use(router, axios);
 app.use(store);
 //app.use(DashboardPlugin)
+//app.component("bootsrap");
+//app.use(BootstrapVue)
+
 
 app.mount('#app'); 
 

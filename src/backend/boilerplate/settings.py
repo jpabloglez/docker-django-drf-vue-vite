@@ -30,6 +30,41 @@ DEBUG = True
 # Reference: https://docs.djangoproject.com/en/4.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True
+
+# Restrict access to the API to a specific origin 
+# CORS_ALLOWED_ORIGINS = [
+#    'http://localhost:8080', # Frontend
+#    'http://127.0.0.1:8000', # Backend
+#]
+
+"""
+CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
+CORS_ALLOW_CREDENTIALS = True
+
+ACCOUNT_EMAIL_VERIFICATION = None
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER": "authenticate.serializers.UserDetailsSerializer",
+}
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "authenticate.serializers.UserRegisterSerializer",
+}
+
+##############################################
+# Reference: https://testdriven.io/blog/django-spa-auth/
+CSRF_COOKIE_SAMESITE = 'Strict'
+SESSION_COOKIE_SAMESITE = 'Strict'
+CSRF_COOKIE_HTTPONLY = False  # False since we will grab it via universal-cookies
+SESSION_COOKIE_HTTPONLY = True
+# NOTE => PROD ONLY
+# CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+"""
+
 
 # Application definition
 
@@ -42,8 +77,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_auth',
-    'graphene_django',
+    'rest_auth', # https://django-rest-auth.readthedocs.io/en/latest/
+    'graphene_django', # 
     'drf_yasg',
     'boilerplate_app',
     'tasks',
@@ -52,10 +87,11 @@ INSTALLED_APPS = [
     'authenticate',
     'login',
     'allauth',
-    'allauth.account',
-    'rest_auth.registration',
+    'allauth.account', 
+    'rest_auth.registration', # rest auth registration
     # 'django-auth',
     'api.apps.ApiConfig', 
+    'djoser', # djoser is a django-rest-auth compatible auth backend
 ]
 
 MIDDLEWARE = [
@@ -132,7 +168,7 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         #'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
@@ -264,37 +300,6 @@ GRAPHENE = {
 ### CORS configuration
 
 # Give full access to the API to any other origins
-# CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOW_ALL_ORIGINS = True
 
 
-# Restrict access to the API to a specific origin 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080', # Frontend
-    'http://127.0.0.1:8000', # Backend
-]
-
-"""
-CORS_EXPOSE_HEADERS = ['Content-Type', 'X-CSRFToken']
-CORS_ALLOW_CREDENTIALS = True
-
-ACCOUNT_EMAIL_VERIFICATION = None
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_EMAIL_REQUIRED = True
-
-REST_AUTH_SERIALIZERS = {
-    "USER_DETAILS_SERIALIZER": "authenticate.serializers.UserDetailsSerializer",
-}
-REST_AUTH_REGISTER_SERIALIZERS = {
-    "REGISTER_SERIALIZER": "authenticate.serializers.UserRegisterSerializer",
-}
-
-##############################################
-# Reference: https://testdriven.io/blog/django-spa-auth/
-CSRF_COOKIE_SAMESITE = 'Strict'
-SESSION_COOKIE_SAMESITE = 'Strict'
-CSRF_COOKIE_HTTPONLY = False  # False since we will grab it via universal-cookies
-SESSION_COOKIE_HTTPONLY = True
-# NOTE => PROD ONLY
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
-"""

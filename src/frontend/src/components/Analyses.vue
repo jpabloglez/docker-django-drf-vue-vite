@@ -1,12 +1,4 @@
 <template>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Analyses</title>
-    </head>
     <body style="display: inline; width: auto;">
         <div>
             <sidebar></sidebar>
@@ -20,7 +12,9 @@
                     <button id="buttom" @click="$router.push('/')">Tutorial</button>
                 </div>
                 <!-- Cards section -->
+                
                 <section id="cards_section">
+                    
                     <div class="analyses_container">
                         <div class="analyses_content">
                             <ul class="analyses_list">
@@ -40,7 +34,6 @@
 
             </div>
     </body>
-    </html>
 </template>
 
 <script>
